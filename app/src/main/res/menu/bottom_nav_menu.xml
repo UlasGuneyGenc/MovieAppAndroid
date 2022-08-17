@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_discover"
+        android:icon="@drawable/ic_discover_24dp"
+        android:title="@string/discover" />
+
+    <item
+        android:id="@+id/navigation_genres"
+        android:icon="@drawable/ic_genres_24"
+        android:title="@string/genres" />
+
+    <item
+        android:id="@+id/navigation_artists"
+        android:icon="@drawable/ic_artists_24"
+        android:title="@string/artists" />
+
+</menu>
