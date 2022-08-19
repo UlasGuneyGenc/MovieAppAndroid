@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_discover"
-        android:name="com.example.movieapp.ui.discover.DiscoverFragment"
+        android:name="com.ugg.movieapp.ui.discover.DiscoverFragment"
         android:label="@string/discover"
         tools:layout="@layout/fragment_discover" />
 
     <fragment
         android:id="@+id/navigation_genres"
-        android:name="com.example.movieapp.ui.genres.GenresFragment"
+        android:name="com.ugg.movieapp.ui.genres.GenresFragment"
         android:label="@string/genres"
         tools:layout="@layout/fragment_genres" />
 
     <fragment
         android:id="@+id/navigation_artists"
-        android:name="com.example.movieapp.ui.artists.ArtistsFragment"
+        android:name="com.ugg.movieapp.ui.artists.ArtistsFragment"
         android:label="@string/artists"
         tools:layout="@layout/fragment_artists" />
 </navigation>

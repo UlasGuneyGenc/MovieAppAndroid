@@ -1,13 +1,13 @@
-package com.example.movieapp.ui.artists
+package com.ugg.movieapp.ui.genres
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ArtistsViewModel : ViewModel() {
+class GenresViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is artists Fragment"
+        value = "This is genres Fragment"
     }
     val text: LiveData<String> = _text
 }

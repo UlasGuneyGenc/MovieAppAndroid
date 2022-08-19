@@ -1,4 +1,4 @@
-package com.example.movieapp.ui.discover
+package com.ugg.movieapp.ui.genres
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.movieapp.databinding.FragmentDiscoverBinding
+import com.ugg.movieapp.databinding.FragmentGenresBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class DiscoverFragment : Fragment() {
+@AndroidEntryPoint
+class GenresFragment : Fragment() {
 
-    private var _binding: FragmentDiscoverBinding? = null
+    private var _binding: FragmentGenresBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +24,14 @@ class DiscoverFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val discoverViewModel =
-            ViewModelProvider(this).get(DiscoverViewModel::class.java)
+        val genresViewModel =
+            ViewModelProvider(this).get(GenresViewModel::class.java)
 
-        _binding = FragmentDiscoverBinding.inflate(inflater, container, false)
+        _binding = FragmentGenresBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDiscover
-        discoverViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textGenres
+        genresViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
