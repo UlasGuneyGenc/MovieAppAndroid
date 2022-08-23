@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ugg.movieapp.databinding.FragmentGenresBinding
 import com.ugg.movieapp.repository.Repository
+import com.ugg.movieapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,12 +36,18 @@ class GenresFragment : Fragment() {
         _binding = FragmentGenresBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val repository = Repository()
-        val viewModelFactory = GenresViewModelFactory(repository)
-        genresViewModel = ViewModelProvider(this, viewModelFactory).get(GenresViewModel::class.java)
-        genresViewModel.getGenres()
+        genresViewModel = ViewModelProvider(this).get(GenresViewModel::class.java)
         genresViewModel.myResponse.observe(viewLifecycleOwner, Observer {response ->
-            Log.d("Response", response.genres[0].name)
+            when(response){
+                is Resource.Error -> {
+                }
+                is Resource.Loading -> {
+
+                }
+                is Resource.Success -> {
+                    response.data?.genres?.get(0)?.let { Log.d("Response", it.name) }
+                }
+            }
         })
 
         return root
