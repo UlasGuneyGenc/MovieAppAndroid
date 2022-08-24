@@ -16,6 +16,8 @@
         <entry key="..\:/Users/UGG/Documents/Android Repos/MovieAppAndroid/app/src/main/res/layout/fragment_discover.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/UGG/Documents/Android Repos/MovieAppAndroid/app/src/main/res/layout/fragment_notifications.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/UGG/Documents/Android Repos/MovieAppAndroid/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_genres.xml" value="0.2125" />
+        <entry key="app/src/main/res/layout/genres_list_item.xml" value="0.2125" />
       </map>
     </option>
   </component>
