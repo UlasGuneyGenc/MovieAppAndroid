@@ -1,4 +1,4 @@
-package com.ugg.movieapp.models
+package com.ugg.movieapp.models.movie
 
 data class SearchResultsModel(
     val page: Int,

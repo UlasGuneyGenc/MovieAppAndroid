@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ugg.movieapp.R
-import com.ugg.movieapp.models.Genre
-import com.ugg.movieapp.models.GenresModel
+import com.ugg.movieapp.models.genres.Genre
 
 class GenresAdapter(private val genresList: List<Genre>) : RecyclerView.Adapter <GenresAdapter.GenresViewHolder>() {
 

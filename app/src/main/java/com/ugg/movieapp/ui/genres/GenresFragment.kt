@@ -17,6 +17,7 @@ import com.ugg.movieapp.databinding.FragmentGenresBinding
 import com.ugg.movieapp.repository.Repository
 import com.ugg.movieapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class GenresFragment : Fragment() {
@@ -58,7 +59,6 @@ class GenresFragment : Fragment() {
 
                 }
                 is Resource.Success -> {
-                    response.data?.genres?.get(0)?.let { Log.d("Response", it.name) }
                     genresAdapter = response.data?.let { GenresAdapter(it.genres) }!!
                     recyclerView.adapter = genresAdapter
                 }

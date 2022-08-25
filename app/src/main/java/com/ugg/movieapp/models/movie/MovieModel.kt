@@ -1,4 +1,4 @@
-package com.ugg.movieapp.models
+package com.ugg.movieapp.models.movie
 
 import com.google.gson.annotations.SerializedName
 
