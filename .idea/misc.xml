@@ -18,6 +18,8 @@
         <entry key="..\:/Users/UGG/Documents/Android Repos/MovieAppAndroid/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5541666666666667" />
         <entry key="app/src/main/res/drawable/genres_gradient.xml" value="0.2985" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/artists_list_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_artists.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/fragment_genres.xml" value="0.2125" />
         <entry key="app/src/main/res/layout/genres_list_item.xml" value="0.25780181884765624" />
       </map>
