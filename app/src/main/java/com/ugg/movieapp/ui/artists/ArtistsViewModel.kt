@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ugg.movieapp.models.artists.ArtistResult
+import com.ugg.movieapp.models.artists.ArtistsModel
 import com.ugg.movieapp.models.genres.GenresModel
 import com.ugg.movieapp.repository.Repository
 import com.ugg.movieapp.util.Resource
@@ -15,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ArtistsViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    val myResponse : MutableLiveData<Resource<ArtistResult?>> = MutableLiveData()
+    val myResponse : MutableLiveData<Resource<ArtistsModel?>> = MutableLiveData()
 
     fun getPopularPersons(){
         myResponse.value = Resource.Loading()

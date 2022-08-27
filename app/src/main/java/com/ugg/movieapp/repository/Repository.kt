@@ -2,6 +2,7 @@ package com.ugg.movieapp.repository
 
 import com.ugg.movieapp.api.MovieAPI
 import com.ugg.movieapp.models.artists.ArtistResult
+import com.ugg.movieapp.models.artists.ArtistsModel
 import com.ugg.movieapp.models.genres.GenresModel
 import com.ugg.movieapp.util.Resource
 import java.lang.Exception
@@ -20,7 +21,7 @@ class Repository @Inject constructor(
         return Resource.Success(response.body())
     }
 
-    suspend fun getPopularPersons(): Resource<ArtistResult?>{
+    suspend fun getPopularPersons(): Resource<ArtistsModel?>{
         val response = try {
             api.getPopularPersons()
         }catch (e: Exception){

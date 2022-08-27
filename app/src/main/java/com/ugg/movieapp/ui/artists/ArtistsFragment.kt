@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ugg.movieapp.R
-import com.ugg.movieapp.adapters.GenresAdapter
+import com.ugg.movieapp.adapters.ArtistsAdapter
 import com.ugg.movieapp.databinding.FragmentArtistsBinding
-import com.ugg.movieapp.models.artists.ArtistsModel
-import com.ugg.movieapp.ui.genres.GenresViewModel
 import com.ugg.movieapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +24,9 @@ class ArtistsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var artistsViewModel: ArtistsViewModel
+
+    private lateinit var artistsAdapter : ArtistsAdapter
+    private lateinit var recyclerView : RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,8 +41,10 @@ class ArtistsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val layoutManager = LinearLayoutManager(context)
-
+        val layoutManager = GridLayoutManager(context,3)
+        recyclerView = view.findViewById(R.id.artists_Recycler_view)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.setHasFixedSize(true)
         artistsViewModel = ViewModelProvider(this).get(ArtistsViewModel::class.java)
         artistsViewModel.myResponse.observe(viewLifecycleOwner, Observer {response ->
             when(response){
@@ -51,6 +54,8 @@ class ArtistsFragment : Fragment() {
 
                 }
                 is Resource.Success -> {
+                    artistsAdapter = response.data?.let { ArtistsAdapter(it.results) }!!
+                    recyclerView.adapter = artistsAdapter
                 }
             }
         })

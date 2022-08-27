@@ -1,6 +1,7 @@
 package com.ugg.movieapp.api
 
 import com.ugg.movieapp.models.artists.ArtistResult
+import com.ugg.movieapp.models.artists.ArtistsModel
 import com.ugg.movieapp.models.genres.GenresModel
 import com.ugg.movieapp.util.Constants.Companion.API_KEY
 import retrofit2.Response
@@ -23,5 +24,5 @@ interface MovieAPI {
         apiKey: String = API_KEY,
         @Query("language")
         language: String = Locale.getDefault().toLanguageTag()
-    ): Response<ArtistResult>
+    ): Response<ArtistsModel>
 }
