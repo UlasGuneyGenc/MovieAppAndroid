@@ -1,10 +1,12 @@
 package com.ugg.movieapp.ui.artists
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,6 +16,7 @@ import com.ugg.movieapp.adapters.ArtistsAdapter
 import com.ugg.movieapp.databinding.FragmentArtistsBinding
 import com.ugg.movieapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class ArtistsFragment : Fragment() {
@@ -41,6 +44,7 @@ class ArtistsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val layoutManager = GridLayoutManager(context,3)
         recyclerView = view.findViewById(R.id.artists_Recycler_view)
         recyclerView.layoutManager = layoutManager
@@ -63,6 +67,33 @@ class ArtistsFragment : Fragment() {
                 }
             }
         })
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Add menu items here
+                menuInflater.inflate(R.menu.main_menu, menu)
+
+                val search: SearchView = menu.findItem(R.id.search_action).actionView as SearchView
+                search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(s: String?): Boolean {
+                        return false
+                    }
+
+                    override fun onQueryTextChange(s: String?): Boolean {
+                        artistsAdapter.getFilter().filter(s)
+                        return false
+                    }
+                })
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                // Handle the menu selection
+
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
     }
 
     override fun onDestroyView() {
