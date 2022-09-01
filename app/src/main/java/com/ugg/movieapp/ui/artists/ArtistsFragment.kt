@@ -54,7 +54,11 @@ class ArtistsFragment : Fragment() {
 
                 }
                 is Resource.Success -> {
-                    artistsAdapter = response.data?.let { ArtistsAdapter(it.results) }!!
+                    artistsAdapter = response.data?.let { context?.let { it1 ->
+                        ArtistsAdapter(it.results,
+                            it1
+                        )
+                    } }!!
                     recyclerView.adapter = artistsAdapter
                 }
             }
