@@ -81,7 +81,12 @@ class ArtistsFragment : Fragment() {
                     }
 
                     override fun onQueryTextChange(s: String?): Boolean {
-                        artistsAdapter.getFilter().filter(s)
+                        if (s != null) {
+                            if(s.length >= 3 || s.isEmpty()){
+                                artistsAdapter.displayedList = artistsViewModel.filterResponse(s)
+                                artistsAdapter.notifyDataSetChanged()
+                            }
+                        }
                         return false
                     }
                 })

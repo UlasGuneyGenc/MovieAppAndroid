@@ -19,8 +19,7 @@ class ArtistsAdapter(private val artistList: List<ArtistResult>, private val con
         val artistImage: ImageView = itemView.findViewById(R.id.artist_image)
     }
 
-    private val mainList: List<ArtistResult> = artistList
-    private var displayedList: List<ArtistResult> = artistList
+    var displayedList: List<ArtistResult> = artistList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistsViewHolder {
         return ArtistsViewHolder(
@@ -35,8 +34,6 @@ class ArtistsAdapter(private val artistList: List<ArtistResult>, private val con
     override fun onBindViewHolder(holder: ArtistsViewHolder, position: Int) {
         holder.artistName.text= displayedList[position].name
 
-
-
         val currentUrl: String = Constants.POSTER_BASE_URL+displayedList[position].profile_path
         Glide.with(context)
             .load(currentUrl)
@@ -47,33 +44,4 @@ class ArtistsAdapter(private val artistList: List<ArtistResult>, private val con
         return displayedList.size
     }
 
-
-
-    fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charString = constraint?.toString() ?: ""
-                if (charString.isEmpty()) displayedList = mainList else {
-                    val filteredList = ArrayList<ArtistResult>()
-                    mainList
-                        .filter {
-                            (it.name.contains(constraint!!))
-                        }
-                        .forEach { filteredList.add(it) }
-                    displayedList = filteredList
-
-                }
-                return FilterResults().apply { values = displayedList }
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-
-                displayedList = if (results?.values == null)
-                    ArrayList()
-                else
-                    results.values as ArrayList<ArtistResult>
-                notifyDataSetChanged()
-            }
-        }
-    }
 }
